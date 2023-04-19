@@ -1,6 +1,9 @@
 pipeline {
     agent any 
-        
+    environment {
+        AWS_REGION = 'us-east-1'
+        AWS_ACCOUNT_ID = '402310761567'
+    }
     stages {
         stage('Hello World') {
             steps {
@@ -12,9 +15,9 @@ pipeline {
             steps {
                 withCredentials([[
                     $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'assumed_role'
                     accessKeyVariable: 'AWS_ACCESS_KEY_ID'
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                    credentialsId: 'assumed_role'
                 ]]) {   
                     sh 'aws s3 ls'
                     sh 'aws sts get-caller-identity'
