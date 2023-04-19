@@ -13,12 +13,14 @@ pipeline {
 
         stage('Assume role') {
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    accessKeyVariable: 'AWS_ACCESS_KEY_ID'
-                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-                    credentialsId: 'assumed_role'
-                ]]) {   
+                withCredentials([
+                    [
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
+                        credentialsId: 'my-aws-creds'
+                    ]
+                ]) {
                     sh 'aws s3 ls'
                     sh 'aws sts get-caller-identity'
                 }
