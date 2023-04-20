@@ -12,16 +12,10 @@ pipeline {
                   userRemoteConfigs: [[url: 'https://github.com/aniketrane040/my_cdk_stacks.git']]])
       }
     }
-    stage('Build') {
-      steps {
-        sh 'npm install'
-        sh 'npm run build'
-      }
-    }
     stage('Deploy') {
         steps {
             withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/jenkins-cf') {
-            sh 'npm run cdk -- deploy --require-approval never'
+            sh 'cdk deploy --require-approval never'
             }
         }
     }
