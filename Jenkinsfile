@@ -2,7 +2,7 @@ pipeline {
     agent any 
     environment {
         AWS_DEFAULT_REGION = 'us-east-1'
-        ROLE_ARN = 'arn:aws:iam::402310761567:role/jenkins_role'
+        ROLE_ARN = 'arn:aws:iam::402310761567:role/MyCdkStackStack-InstanceInstanceRoleE9785DE5-1A10IOOHKJ0WJ'
     }
     stages {
         stage('Hello World') {
@@ -13,7 +13,7 @@ pipeline {
 
         stage('Assume role') {
             steps {
-                withAWS(role: 'arn:aws:iam::402310761567:role/jenkins_role') {
+                withAWS(role: 'arn:aws:iam::402310761567:role/MyCdkStackStack-InstanceInstanceRoleE9785DE5-1A10IOOHKJ0WJ') {
                     sh 'cdk deploy MyCDkStack'
                 }
             }
