@@ -1,37 +1,30 @@
 pipeline {
-    agent any 
-    environment {
-        AWS_REGION = 'us-east-1'
-        AWS_ACCOUNT_ID = '402310761567'
+  agent any
+  environment {
+    AWS_DEFAULT_REGION = 'us-east-1'
+    AWS_DEFAULT_OUTPUT = 'json'
+  }
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout([$class: 'GitSCM',
+                  branches: [[name: '*/develop']],
+                  userRemoteConfigs: [[url: 'https://github.com/aniketrane040/my_cdk_stacks.git']]])
+      }
     }
-    stages {
-        stage('Hello World') {
-            steps {
-                echo 'Hello Aniket !'
-            }
-        }
-
-        stage('Assume role') {
-            steps {
-                withCredentials([
-                    [
-                        $class: 'AmazonWebServicesCredentialsBinding',
-                        accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-                        secretKeyVariable: 'AWS_SECRET_ACCESS_KEY',
-                        credentialsId: 'assumed_role'
-                    ]
-                ]) {
-                    sh 'aws s3 ls'
-                    sh 'aws sts get-caller-identity'
-                }
-            }
-        }
-
-        stage('Done') {
-            steps {
-                echo 'done !'
+    stage('Build') {
+      steps {
+        sh 'npm install'
+        sh 'npm run build'
+      }
+    }
+    stage('Deploy') {
+        steps {
+            withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/jenkins-cf') {
+            sh 'npm run cdk -- deploy --require-approval never'
             }
         }
     }
-    
+
+  }
 }
