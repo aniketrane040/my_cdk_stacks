@@ -13,7 +13,7 @@ pipeline {
 
         stage('Assume role') {
             steps {
-                withAWS(role: 'arn:aws:iam::402310761567:role/MyCdkStackStack-InstanceInstanceRoleE9785DE5-1A10IOOHKJ0WJ') {
+                withAWS(role: 'aarn:aws:iam::402310761567:role/jenkins_role') {
                     sh 'cdk deploy MyCDkStack'
                 }
             }
