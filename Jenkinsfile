@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Deploy') {
         steps {
-            withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/ec2-cw-role') {
+            withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/jenkins-cf') {
             sh 'cdk deploy --verbose "test-ec2-jenkins" --require-approval never --role-arn arn:aws:iam::402310761567:role/jenkins-cf'
             }
         }
