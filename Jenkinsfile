@@ -16,11 +16,10 @@ pipeline {
         steps {
           script{
               withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/cdk-deploy') {
-              def stackName = "test-jenkins"
               sh 'cdk synth'
               sh 'cdk diff'
               sh 'cdk synth'
-              sh 'cdk deploy MyCdkStackStack --parameters StackName=${stackName} --require-approval never'
+              sh 'cdk deploy --require-approval never'
               }
             }
         }
