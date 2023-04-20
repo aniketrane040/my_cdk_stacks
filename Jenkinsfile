@@ -13,7 +13,6 @@ pipeline {
 
         stage('Assume role') {
             steps {
-                withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/cdk-deploy')
                 sh 'cdk synth'
                 sh 'cdk deploy'
             }
