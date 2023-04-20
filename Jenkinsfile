@@ -2,8 +2,7 @@ pipeline {
     agent any 
     environment {
         AWS_REGION = 'us-east-1'
-        AWS_ACCOUNT_ID = '402310761567',
-        ROLE_ARN = 'arn:aws:iam::402310761567:role/IAS-Training'
+        AWS_ACCOUNT_ID = '402310761567'
     }
     stages {
         stage('Hello World') {
