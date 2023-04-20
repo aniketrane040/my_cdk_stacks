@@ -3,7 +3,7 @@ import os
 
 import aws_cdk as cdk
 
-from my_cdk_stack.my_cdk_stack_stack import MyCdkStackStack
+from my_cdk_stack.my_cdk_stack_stack import MyCdkStackNew
 
 env_USA = cdk.Environment(account="402310761567", region="us-east-1")
 
