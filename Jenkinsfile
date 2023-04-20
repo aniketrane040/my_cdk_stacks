@@ -13,7 +13,6 @@ pipeline {
 
         stage('Assume role') {
             steps {
-                sh 'pip3 install -r requirement.txt'
                 sh 'cdk synth'
                 sh 'cdk deploy MyCDkStack'
             }
