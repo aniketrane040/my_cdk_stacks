@@ -18,7 +18,7 @@ pipeline {
             sh 'cdk synth'
             sh 'cdk diff'
             sh 'cdk synth'
-            sh 'cdk deploy --require-approval never --role-arn arn:aws:iam::402310761567:role/jenkins-cf'
+            sh 'cdk deploy --require-approval never'
             }
         }
     }
