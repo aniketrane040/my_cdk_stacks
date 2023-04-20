@@ -15,10 +15,10 @@ pipeline {
     stage('Deploy') {
         steps {
             withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/cdk-deploy') {
-            sh 'cdk synth --verbose "test-jenkins"'
+            sh 'cdk synth --verbose test-jenkins'
             sh 'cdk diff'
             sh 'cdk synth'
-            sh 'cdk deploy --verbose "test-jenkins" --require-approval never'
+            sh 'cdk deploy --verbose test-jenkins --require-approval never'
             }
         }
     }
