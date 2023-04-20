@@ -14,6 +14,8 @@ pipeline {
     }
     stage('Build') {
       steps {
+        sh 'sudo yum install npm -y'
+        sh 'npm install aws-cdk'
         sh 'npm install'
         sh 'npm run build'
       }
