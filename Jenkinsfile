@@ -19,7 +19,7 @@ pipeline {
                     paramName1 = 'parameter_name'
                     def paramName = sh(
                               returnStdout: true,
-                              script: "python my_cdk_stack_stack.py get_param_value ${stackName} ${paramName1}"
+                              script: "python my_cdk_stack/my_cdk_stack_stack.py get_param_value ${stackName} ${paramName1}"
                           ).trim()
                 //    def paramName = "/cre/ami-id"
                     def paramValue = sh(returnStdout: true, script: "aws ssm get-parameter --name ${paramName} --query 'Parameter.Value' --output text")
