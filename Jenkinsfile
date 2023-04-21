@@ -22,6 +22,7 @@ pipeline {
                               script: "python my_cdk_stack/my_cdk_stack_stack.py get_param_value ${stackName} ${paramName1}"
                           ).trim()
                 //    def paramName = "/cre/ami-id"
+                    echo "${paramName}"
                     def paramValue = sh(returnStdout: true, script: "aws ssm get-parameter --name ${paramName} --query 'Parameter.Value' --output text")
                     if (paramValue) {
                         echo "SSM parameter ${paramName} has a value: ${paramValue}"
