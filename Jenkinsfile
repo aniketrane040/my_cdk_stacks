@@ -25,7 +25,7 @@ pipeline {
         stage('Deply cdk Stack') {
             steps {
                 sh 'cdk synth'
-                sh 'cdk deploy'
+                sh 'cdk deploy --require-approval never'
             }
         }
 
