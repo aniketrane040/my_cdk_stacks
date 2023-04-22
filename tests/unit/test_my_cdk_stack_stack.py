@@ -6,11 +6,13 @@ from aws_cdk import (
 )
 from my_cdk_stack.my_cdk_stack_stack import MyCdkStackStack
 
+env_USA = core.Environment(account="402310761567", region="us-east-1")
+
 class TestMyStack(unittest.TestCase):
 
     def test_ssm_parameter(self):
         app = core.App()
-        stack = MyCdkStackStack(app, "test-stack")
+        stack = MyCdkStackStack(app, "test-stack",env=env_USA)
 
         # Retrieve the parameter value from SSM Parameter Store
         parameter_name = '/cre/ami-id'
