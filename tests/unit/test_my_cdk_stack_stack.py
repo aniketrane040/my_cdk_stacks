@@ -9,7 +9,8 @@ class TestSSMParameter(unittest.TestCase):
 
     def __init__(self, methodName: str = ...) -> None:
         super().__init__(methodName)
-        self.ssm = boto3.client('ssm',region_name='us-east-1')
+        self.session = boto3.Session()
+        self.ssm = self.session.client('ssm',region_name='us-east-1')
 
 
     def test_parameter_value(self):
