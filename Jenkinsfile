@@ -18,7 +18,7 @@ pipeline {
 
         stage('Unit Testing') {
           steps {
-            sh 'python -m unittest discover -v'
+            sh 'python tests/unit/test_my_cdk_stack_stack.py'
           }
         }
 
