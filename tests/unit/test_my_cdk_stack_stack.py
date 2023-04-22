@@ -17,7 +17,7 @@ class TestSSMParameter(unittest.TestCase):
         # Replace 'my-parameter' with the name of the parameter you want to test
         parameter_name = '/cre/ami-id'
         parameter_value = self.ssm.get_parameter(Name=parameter_name)['Parameter']['Value']
-        self.assertEqual(parameter_value, 'ami-06e46074ae430fba6')
+        self.assertEqual(parameter_value, 'ami-06e46074ae430fba')
 
 if __name__ == '__main__':
     unittest.main()
