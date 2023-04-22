@@ -19,7 +19,7 @@ class TestMyStack(unittest.TestCase):
         parameter_value = ssm.StringParameter.value_for_string_parameter(
             stack, 
             parameter_name=parameter_name
-        )['Parameter']['Value']
+        )
 
         # Check that the parameter value is correct
         self.assertEqual(parameter_value, "ami-06e46074ae430fba6")
