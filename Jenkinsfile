@@ -1,5 +1,8 @@
 pipeline {
     agent any 
+    environment {
+        AWS_DEFAULT_REGION = 'us-east-1'
+    }
     stages {
         stage('Welcome') {
             steps {
@@ -15,7 +18,7 @@ pipeline {
 
         stage('Unit Testing') {
           steps {
-            withAWS(region: 'us-east-1', role: 'arn:aws:iam::402310761567:role/cdk-deploy') {
+            withAWS(role: 'arn:aws:iam::402310761567:role/cdk-deploy') {
               sh 'python -m unittest discover -v'
             }
           }
