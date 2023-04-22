@@ -9,7 +9,7 @@ pipeline {
 
         stage('Install Dependencies') {
           steps {
-            sh 'pip install -r my_cdk_stack/requirement.txt'
+            sh 'pip install -r my_cdk_stacks/requirement.txt'
           }
         }
 
