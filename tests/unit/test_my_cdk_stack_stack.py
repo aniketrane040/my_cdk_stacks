@@ -4,7 +4,7 @@ import aws_cdk.assertions as assertions
 from aws_cdk import (
     aws_ssm as ssm
 )
-from my_cdk_stack import MyCdkStackStack
+from my_cdk_stack.my_cdk_stack_stack import MyCdkStackStack
 
 class TestMyStack(unittest.TestCase):
 
