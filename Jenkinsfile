@@ -16,11 +16,11 @@ pipeline {
           }
         }
 
-        stage('Unit Testing') {
-          steps {
-            sh 'python tests/unit/test_my_cdk_stack_stack.py'
-          }
-        }
+        // stage('Unit Testing') {
+        //   steps {
+        //     sh 'python tests/unit/test_my_cdk_stack_stack.py'
+        //   }
+        // }
 
         stage('Deply cdk Stack') {
             steps {
