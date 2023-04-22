@@ -18,9 +18,7 @@ pipeline {
 
         stage('Unit Testing') {
           steps {
-            withAWS(role: 'arn:aws:iam::402310761567:role/cdk-deploy') {
-              sh 'python -m unittest discover -v'
-            }
+            sh 'python -m unittest discover -v'
           }
         }
 
