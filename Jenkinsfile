@@ -25,6 +25,7 @@ pipeline {
         stage('Deply cdk Stack') {
             steps {
                 sh 'cdk synth'
+                sh 'cdk diff'
                 sh 'cdk deploy'
             }
         }
